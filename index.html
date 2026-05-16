@@ -408,17 +408,6 @@
 
     .btn-white:hover { opacity: 0.9; transform: translateY(-1px); }
 
-    .cta-word {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: bottom;
-  margin-right: 0.18em;
-}
-
-.cta-word-inner {
-  display: inline-block;
-}
-
     /* ── FOOTER ── */
     footer {
       padding: 32px 48px;
@@ -529,14 +518,7 @@ Watches.
   </section>
 
   <div class="cta-block">
-    <h2 class="cta-headline">
-  <span class="cta-word">Your</span>
-  <span class="cta-word">Next</span>
-  <span class="cta-word">Video</span>
-  <span class="cta-word">Can</span>
-  <span class="cta-word">Change</span>
-  <span class="cta-word">Everything.</span>
-</h2>
+    <h2 class="cta-headline">Your Next Video Can Change Everything.</h2>
     <a href="https://tally.so/r/YOURFORM" target="_blank" class="btn-white">Get Your Audit Now</a>
   </div>
 
@@ -575,20 +557,9 @@ Watches.
       });
     });
 
-    document.querySelectorAll('.cta-word').forEach(word => {
-  const inner = document.createElement('span');
-  inner.className = 'cta-word-inner';
-  inner.innerHTML = word.innerHTML;
-  word.innerHTML = '';
-  word.appendChild(inner);
-});
-
-gsap.from('.cta-word-inner', {
+    gsap.from('.cta-headline', {
   scrollTrigger: { trigger: '.cta-block', start: 'top 82%' },
-  y: '110%',
-  duration: 0.7,
-  ease: 'power3.out',
-  stagger: 0.08
+  opacity: 0, y: 36, duration: 0.8, ease: 'power2.out'
 });
     </script>
 </body>
