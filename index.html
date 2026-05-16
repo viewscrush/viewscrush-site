@@ -128,14 +128,14 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -52%);
-      width: min(580px, 75vw);
-      height: min(580px, 75vw);
-      object-fit: contain;
-      opacity: 0.055;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.08;
       z-index: 0;
       pointer-events: none;
-      border-radius: 20%;
-      filter: blur(2px);
+      border-radius: 0;
+      filter: none;
     }
 
     .hero-content {
@@ -157,13 +157,14 @@
     }
 
     .hero-headline {
-      font-weight: 800;
-      font-size: clamp(42px, 7vw, 96px);
-      line-height: 1.0;
-      letter-spacing: -2.5px;
-      max-width: 800px;
-      margin: 0 auto 28px;
-    }
+  font-weight: 800;
+  font-size: clamp(42px, 7vw, 96px);
+  line-height: 1.0;
+  letter-spacing: -2.5px;
+  max-width: 800px;
+  margin: 0 auto 28px;
+  text-shadow: 0 2px 32px rgba(250,250,248,0.6);
+}
 
     .hero-headline .accent { color: var(--red); }
 
