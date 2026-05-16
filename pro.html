@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Channel Review Pro — ViewsCrush</title>
+  <meta name="description" content="Get your YouTube channel reviewed by ViewsCrush. Pro plan — $79.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #FAFAF8;
+      --red: #E81C1C;
+      --text: #0C0C0C;
+      --muted: #77776F;
+      --card: #F2F2EF;
+      --border: #E4E4DF;
+      --font: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(250,250,248,0.97);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-weight: 800;
+      font-size: 20px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-logo span { color: var(--red); }
+
+    .nav-back {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--text); }
+
+    .page {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 64px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .tier-badge {
+      display: inline-block;
+      background: var(--text);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+
+    .info-title {
+      font-weight: 800;
+      font-size: clamp(32px, 4vw, 52px);
+      letter-spacing: -1.5px;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .info-price {
+      font-weight: 800;
+      font-size: 56px;
+      letter-spacing: -2px;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .info-price sup {
+      font-size: 24px;
+      vertical-align: super;
+      letter-spacing: 0;
+    }
+
+    .info-delivery {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+
+    .info-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    .info-list li {
+      display: flex;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.5;
+      align-items: flex-start;
+    }
+
+    .info-list li::before {
+      content: '→';
+      color: var(--red);
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+
+    .info-note {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+      padding: 16px 20px;
+      background: var(--card);
+      border-radius: 12px;
+      border-left: 3px solid var(--text);
+    }
+
+    .form-side {
+      background: var(--text);
+      border: 1px solid var(--text);
+      border-radius: 24px;
+      padding: 40px 36px;
+    }
+
+    .form-title {
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .form-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 32px;
+    }
+
+    .field { margin-bottom: 20px; }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 8px;
+    }
+
+    label span { color: var(--red); }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      font-family: var(--font);
+      font-size: 14px;
+      color: #fff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      resize: none;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(232,28,28,0.15);
+    }
+
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.25); }
+
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      border-radius: 100px;
+      font-family: var(--font);
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      margin-top: 8px;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-submit:hover { opacity: 0.84; transform: translateY(-1px); }
+
+    .form-disclaimer {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      text-align: center;
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .page {
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+        gap: 40px;
+      }
+      .form-side { padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">views<span>crush</span></a>
+    <a href="/" class="nav-back">← Back to site</a>
+  </nav>
+
+  <div class="page">
+
+    <div class="info-side">
+      <div class="tier-badge">Pro Plan</div>
+      <h1 class="info-title">Channel Review Pro</h1>
+      <div class="info-price"><sup>$</sup>79</div>
+      <p class="info-delivery">Delivered within 72 hours</p>
+      <ul class="info-list">
+        <li>Thumbnail analysis of your last 10 videos</li>
+        <li>Title analysis of your last 10 videos</li>
+        <li>CTR breakdown — thumbnail vs title vs topic</li>
+        <li>Hook analysis of your best and worst performing video</li>
+        <li>What your competitors are doing that you are not</li>
+        <li>3x banger video ideas tailored to your channel</li>
+        <li>A full in-depth report with a 30-day content direction</li>
+      </ul>
+      <p class="info-note">This review is done personally by me — no AI, no templates. You'll get real, actionable feedback within 72 hours of payment.</p>
+    </div>
+
+    <div class="form-side">
+      <h2 class="form-title">Tell me about your channel</h2>
+      <p class="form-sub">Fill in your details and you'll be taken to checkout.</p>
+
+      <form id="reviewForm">
+        <div class="field">
+          <label>Your Name <span>*</span></label>
+          <input type="text" id="name" placeholder="John Smith" required>
+        </div>
+        <div class="field">
+          <label>Your Email <span>*</span></label>
+          <input type="email" id="email" placeholder="john@gmail.com" required>
+        </div>
+        <div class="field">
+          <label>YouTube Channel URL <span>*</span></label>
+          <input type="url" id="channel" placeholder="https://youtube.com/@yourchannel" required>
+        </div>
+        <div class="field">
+          <label>Anything you want me to focus on? <span style="color:rgba(255,255,255,0.3);font-weight:400">(optional)</span></label>
+          <textarea id="notes" rows="3" placeholder="e.g. My thumbnails get low CTR, I'm struggling with titles..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Continue to Payment →</button>
+        <p class="form-disclaimer">You'll be redirected to a secure checkout page. Payment processed by Lemon Squeezy.</p>
+      </form>
+    </div>
+
+  </div>
+
+  <script>
+    document.getElementById('reviewForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const channel = document.getElementById('channel').value.trim();
+      if (!name || !email || !channel) return;
+      const url = `https://viewscrush.lemonsqueezy.com/checkout/buy/168d49f0-2465-434f-bc99-af00c6827a76?checkout[name]=${encodeURIComponent(name)}&checkout[email]=${encodeURIComponent(email)}&checkout[custom][channel]=${encodeURIComponent(channel)}`;
+      window.location.href = url;
+    });
+  </script>
+
+</body>
+</html>
