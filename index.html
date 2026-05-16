@@ -113,15 +113,24 @@
       overflow: hidden;
     }
 
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 280px;
-      background: linear-gradient(to bottom, transparent, var(--bg));
-      pointer-events: none;
-      z-index: 2;
-    }
+    .hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(250,250,248,0.55);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 280px;
+  background: linear-gradient(to bottom, transparent, var(--bg));
+  pointer-events: none;
+  z-index: 2;
+}
 
     .hero-logo-bg {
       position: absolute;
@@ -139,9 +148,9 @@
     }
 
     .hero-content {
-      position: relative;
-      z-index: 1;
-    }
+    position: relative;
+    z-index: 3;
+   }
 
     .hero-headline {
   font-weight: 800;
@@ -513,7 +522,7 @@
       navWrap.classList.toggle('scrolled', window.scrollY > 60);
     }, { passive: true });
 
-    gsap.from('.hero-logo-bg', { opacity: 0, scale: 0.88, duration: 1.6, delay: 0.1, ease: 'power2.out' });
+    gsap.set('.hero-logo-bg', { opacity: 0.08 });
     gsap.from('.hero-headline', { opacity: 0, y: 40, duration: 0.9, delay: 0.45, ease: 'power3.out' });
     gsap.from('.hero-sub', { opacity: 0, y: 24, duration: 0.7, delay: 0.65, ease: 'power2.out' });
     gsap.from('.hero-ctas', { opacity: 0, y: 18, duration: 0.6, delay: 0.8, ease: 'power2.out' });
