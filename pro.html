@@ -301,11 +301,15 @@
 
   <script>
     document.getElementById('reviewForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const channel = document.getElementById('channel').value.trim();
-      if (!name || !email || !channel) return;
+  e.preventDefault();
+  const btn = this.querySelector('.btn-submit');
+  if (btn.disabled) return;
+  btn.disabled = true;
+  btn.textContent = 'Redirecting...';
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const channel = document.getElementById('channel').value.trim();
+  if (!name || !email || !channel) { btn.disabled = false; btn.textContent = 'Continue to Payment →'; return; }
       const url = `https://viewscrush.lemonsqueezy.com/checkout/buy/168d49f0-2465-434f-bc99-af00c6827a76?checkout[name]=${encodeURIComponent(name)}&checkout[email]=${encodeURIComponent(email)}&checkout[custom][channel]=${encodeURIComponent(channel)}`;
       window.location.href = url;
     });
