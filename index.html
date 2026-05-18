@@ -200,16 +200,22 @@
   font-weight: 500;
   font-size: 14px;
   padding: 14px 20px;
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-      text-decoration: none;
-      border-radius: 100px;
-      transition: border-color 0.2s;
-      display: inline-block;
-    }
+  background: rgba(255,255,255,0.2);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.38);
+  text-decoration: none;
+  border-radius: 100px;
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  transition: all 0.2s;
+  display: inline-block;
+}
 
-    .btn-ghost:hover { border-color: #aaa; }
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.35);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+}
 
     /* ── SHARED ── */
     .eyebrow {
