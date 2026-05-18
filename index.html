@@ -278,16 +278,16 @@
     .pricing-section .section-title { margin-bottom: 56px; }
 
     .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      max-width: 860px;
-    }
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 780px;
+}
 
     .pricing-card {
   background: var(--card);
-  padding: 48px 40px;
-  border-radius: 24px;
+  padding: 32px 28px;
+  border-radius: 20px;
   border: 1px solid var(--border);
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -330,14 +330,13 @@
     }
 
     .tier-price {
-      font-weight: 800;
-      font-size: 80px;
-      line-height: 1;
-      color: var(--text);
-      letter-spacing: -3px;
-      margin-bottom: 4px;
-    }
-
+  font-weight: 800;
+  font-size: 60px;
+  line-height: 1;
+  color: var(--text);
+  letter-spacing: -2px;
+  margin-bottom: 4px;
+}
     .tier-price sup { font-size: 32px; font-weight: 700; vertical-align: super; letter-spacing: 0; }
 
     .tier-price-old {
