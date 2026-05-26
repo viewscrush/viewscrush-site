@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
   <script defer src="/_vercel/insights/script.js"></script>
 
@@ -580,15 +580,17 @@ Watches.
   <script>
     gsap.registerPlugin(ScrollTrigger);
 
-    const lenis = new Lenis({ duration: 1.2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add(time => lenis.raf(time * 1000));
-    gsap.ticker.lagSmoothing(0);
-
     const navWrap = document.getElementById('navWrap');
-    lenis.on('scroll', ({ scroll }) => {
-      navWrap.classList.toggle('scrolled', scroll > 60);
-    });
+
+    if (window.innerWidth > 768) {
+      var lenis = new Lenis({ duration: 1.2, easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }, smooth: true });
+      function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+      lenis.on('scroll', ScrollTrigger.update);
+      lenis.on('scroll', function(e){ navWrap.classList.toggle('scrolled', e.scroll > 60); });
+    } else {
+      window.addEventListener('scroll', function(){ navWrap.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+    }
 
     gsap.set('.hero-logo-bg', { opacity: 0.25 });
     gsap.from('.hero-headline', { opacity: 0, y: 40, duration: 0.9, delay: 0.45, ease: 'power3.out' });
