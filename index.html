@@ -85,17 +85,17 @@
     nav.scrolled .nav-glass-specular { box-shadow: none; }
     
     .nav-logo {
-      font-weight: 800;
-      font-size: 20px;
+      font-weight: 700;
+      font-size: 15px;
       color: var(--text);
       text-decoration: none;
-      letter-spacing: -0.5px;
+      letter-spacing: 0.01em;
     }
 
     .nav-logo span { color: var(--red); }
 
     .nav-links { display: flex; gap: 2rem; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; letter-spacing: 0.02em; transition: color 0.2s; position: relative; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.8125rem; letter-spacing: 0.04em; transition: color 0.2s; position: relative; }
     .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--text); transition: width 0.3s ease; }
     .nav-links a:hover::after { width: 100%; }
     .nav-links a:hover { color: var(--text); }
@@ -105,11 +105,11 @@
     .btn-nav {
       font-weight: 600;
       font-size: 13px;
-      padding: 10px 24px;
+      padding: 0.55rem 1.25rem;
       background: var(--red);
       color: #fff;
       text-decoration: none;
-      border-radius: 100px;
+      border-radius: 50px;
       transition: opacity 0.2s, transform 0.15s;
       display: inline-block;
     }
