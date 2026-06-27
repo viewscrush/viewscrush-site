@@ -37,7 +37,7 @@
       --lg-highlight: rgba(255,255,255,0.35);
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; }
     #pricing, #contact { scroll-margin-top: 100px; }
 
     body {
@@ -526,6 +526,7 @@
 
     /* ── MOBILE ── */
     @media (max-width: 768px) {
+      html { scroll-behavior: smooth; }
       nav {
         top: 0.75rem; left: 0.75rem; right: 0.75rem;
         border-radius: 16px;
