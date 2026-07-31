@@ -582,6 +582,21 @@
     @media (max-width: 480px) {
       .facts-grid { grid-template-columns: 1fr; }
     }
+    .modal-overlay { position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; padding: 20px; }
+.modal-overlay.active { display: flex; }
+.modal-box { background: #1a1a1a; border: 1px solid var(--border); border-radius: 20px; padding: 36px 32px; width: 100%; max-width: 420px; position: relative; }
+.modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; color: var(--muted); font-size: 1.4rem; cursor: pointer; line-height: 1; }
+.modal-close:hover { color: var(--text); }
+.modal-title { font-weight: 800; font-size: 22px; letter-spacing: -0.5px; margin-bottom: 6px; }
+.modal-sub { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+.modal-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.modal-field label { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+.modal-field input { background: #111; border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; color: var(--text); font-family: var(--font); font-size: 14px; outline: none; transition: border-color 0.2s; }
+.modal-field input:focus { border-color: rgba(255,255,255,0.3); }
+.modal-field input::placeholder { color: rgba(240,237,230,0.25); }
+.btn-modal-submit { display: block; width: 100%; background: var(--red); color: #fff; border: none; border-radius: 100px; padding: 14px; font-family: var(--font); font-size: 14px; font-weight: 700; cursor: pointer; margin-top: 8px; transition: opacity 0.2s; }
+.btn-modal-submit:hover { opacity: 0.85; }
+.btn-modal-submit:disabled { opacity: 0.5; cursor: not-allowed; }
   </style>
 </head>
 
@@ -691,7 +706,7 @@
   <li>What you are doing wrong and how to actually fix it</li>
   <li>A full report of your entire YouTube channel</li>
 </ul>
-        <a href="https://checkout.dodopayments.com/buy/pdt_0NkK82K967MaxUsGxZw3f?quantity=1" target="_blank" class="btn-tier btn-tier-outline">Get My Review</a>
+        <button class="btn-tier btn-tier-outline" onclick="openModal('https://checkout.dodopayments.com/buy/pdt_0NkK82K967MaxUsGxZw3f?quantity=1','YouTube Channel Review — Lite')">Get My Review</button>
       </div>
       <div class="pricing-card featured">
         <div class="badge">Most Popular</div>
@@ -711,7 +726,7 @@
   <li>3x banger video ideas tailored to your channel</li>
   <li>A full in-depth report with a 30-day content direction</li>
 </ul>
-        <a href="https://checkout.dodopayments.com/buy/pdt_0NkKErStUNtCnPH4quX0l?quantity=1" target="_blank" class="btn-tier btn-tier-red">Get My Review</a>
+        <button class="btn-tier btn-tier-red" onclick="openModal('https://checkout.dodopayments.com/buy/pdt_0NkKErStUNtCnPH4quX0l?quantity=1','YouTube Channel Review — Pro')">Get My Review</button>
       </div>
       <div class="pricing-card">
   <p class="tier-label">1:1 Session</p>
@@ -723,7 +738,7 @@
     <li>Clear action plan for your next 30 days</li>
     <li>Direct answers to all your questions</li>
   </ul>
-  <a href="https://checkout.dodopayments.com/buy/pdt_0NkKFiYzYGqEsXQbU98HC?quantity=1" target="_blank" class="btn-tier btn-tier-outline">Book Session</a>
+  <button class="btn-tier btn-tier-outline" onclick="openModal('https://checkout.dodopayments.com/buy/pdt_0NkKFiYzYGqEsXQbU98HC?quantity=1','1:1 YouTube Strategy Session')">Book Session</button>
 </div>
     </div>
   </section>
@@ -733,6 +748,26 @@
     <a href="#pricing" class="btn-white">Get My Review</a>
   </div>
 
+  <div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <p class="modal-title">Almost there.</p>
+    <p class="modal-sub" id="modalSub">Fill in your details to continue to checkout.</p>
+    <div class="modal-field">
+      <label>Your Name</label>
+      <input type="text" id="modalName" placeholder="John Doe" required>
+    </div>
+    <div class="modal-field">
+      <label>Your Email</label>
+      <input type="email" id="modalEmail" placeholder="john@email.com" required>
+    </div>
+    <div class="modal-field">
+      <label>YouTube Channel URL</label>
+      <input type="url" id="modalChannel" placeholder="https://youtube.com/@yourchannel" required>
+    </div>
+    <button class="btn-modal-submit" id="modalSubmit" onclick="handleModalSubmit()">Continue to Checkout →</button>
+  </div>
+</div>
   <footer id="contact">
     <a href="/" class="footer-logo" style="display:flex;align-items:center;gap:7px;"><img src="brand-logo.png" alt="" style="height:20px;width:20px;flex-shrink:0;border-radius:4px;"><span style="color:var(--text);">Views<span style="color:var(--red);">Crush</span></span></a>
     <p>© 2026 ViewsCrush. All rights reserved.</p>
@@ -869,6 +904,36 @@
   scrollTrigger: { trigger: '.cta-block', start: 'top 82%' },
   opacity: 0, y: 36, duration: 0.8, ease: 'power2.out'
 });
+    var _modalPaymentLink = '';
+function openModal(link, product) {
+  _modalPaymentLink = link;
+  document.getElementById('modalSub').textContent = product + ' — fill in your details to continue.';
+  document.getElementById('modalOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+async function handleModalSubmit() {
+  var name = document.getElementById('modalName').value.trim();
+  var email = document.getElementById('modalEmail').value.trim();
+  var channel = document.getElementById('modalChannel').value.trim();
+  if (!name || !email || !channel) { alert('Please fill in all fields.'); return; }
+  var btn = document.getElementById('modalSubmit');
+  btn.textContent = 'Processing...'; btn.disabled = true;
+  var formData = new FormData();
+  formData.append('access_key', 'b26b2d9b-9fab-4bf0-a78c-c8da6128bc5a');
+  formData.append('name', name);
+  formData.append('email', email);
+  formData.append('YouTube Channel', channel);
+  formData.append('subject', 'New ViewsCrush Order — ' + document.getElementById('modalSub').textContent);
+  try {
+    await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
+  } catch(e) {}
+  window.location.href = _modalPaymentLink;
+}
     </script>
 </body>
 </html>
