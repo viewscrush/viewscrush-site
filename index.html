@@ -685,7 +685,7 @@
   <div class="learn-thumb-wrap">
     <img src="thumbnail.jpeg" alt="ViewsCrush" class="learn-thumb">
   </div>
-  <a href="https://youtube.com/watch?v=YOURVIDEOID" target="_blank" class="btn-primary learn-cta">Watch Now</a>
+  <a href="https://youtu.be/6_9pbc4dSIM?si=L7WZ8rnCXJjT0lH2" target="_blank" rel="noopener noreferrer" class="btn-primary learn-cta">Watch Now</a>
 </div>
 
   <section id="pricing" class="pricing-section">
@@ -921,6 +921,8 @@ async function handleModalSubmit() {
   var email = document.getElementById('modalEmail').value.trim();
   var channel = document.getElementById('modalChannel').value.trim();
   if (!name || !email || !channel) { alert('Please fill in all fields.'); return; }
+var ytPattern = /^https?:\/\/(www\.)?youtube\.com\/(@[\w.-]+|channel\/UC[\w-]{22}|c\/[\w.-]+|user\/[\w.-]+)\/?$/i;
+if (!ytPattern.test(channel)) { alert('Please enter a valid YouTube channel URL.\nExamples:\nhttps://youtube.com/@yourchannel\nhttps://youtube.com/channel/UCxxxxxxx'); return; }
   var btn = document.getElementById('modalSubmit');
   btn.textContent = 'Processing...'; btn.disabled = true;
   var formData = new FormData();
