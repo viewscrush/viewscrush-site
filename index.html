@@ -926,6 +926,8 @@ async function handleModalSubmit() {
   var email = document.getElementById('modalEmail').value.trim();
   var channel = document.getElementById('modalChannel').value.trim();
   if (!name || !email || !channel) { alert('Please fill in all fields.'); return; }
+var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if (!emailPattern.test(email)) { alert('Please enter a valid email address.'); return; }
 var ytPattern = /^https?:\/\/(www\.)?youtube\.com\/(@[\w.-]+|channel\/UC[\w-]{22}|c\/[\w.-]+|user\/[\w.-]+)\/?$/i;
 if (!ytPattern.test(channel)) { alert('Please enter a valid YouTube channel URL.\nExamples:\nhttps://youtube.com/@yourchannel\nhttps://youtube.com/channel/UCxxxxxxx'); return; }
   var btn = document.getElementById('modalSubmit');
